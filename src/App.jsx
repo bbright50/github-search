@@ -13,7 +13,6 @@ export default function App() {
         <div>
           <SearchBar />
           <AutoSuggest />
-          <h1>Hello World!</h1>
           <SearchResults />
         </div>
   )
