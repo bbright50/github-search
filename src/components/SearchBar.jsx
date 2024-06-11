@@ -8,8 +8,13 @@ export default function SearchBar() {
     // 
     // }
 
+    // may need a use effect function to delay the update of 
+    // the state for the autofill so it doesnt always immediately update
+    // would need setSearchValue in it
+
  function handleSeachValueChange(e) {
-    setSearchValue(e.target.value)
+    // would need use effect instead of setSearchValue
+    setSearchValue(e.target.value) 
     console.log(searchValue)
     // Need to add autosuggest function in here
  }
