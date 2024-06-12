@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function SearchItems() {
+export default function SearchItems({article, name, link, id}) {
 
     let itemList = [
         {
@@ -23,10 +23,10 @@ export default function SearchItems() {
 
     return (
         <div className='result-item'>
-            <h1 className='item-article'>KojfiUpdate about-commit-signature-verification.md</h1>
+            <h1 className='item-article'>{article}</h1>
             <div className='result-lower-box'>
-                <h2 className='item-name'>Sakib43351</h2>
-                <h3 className='item-link'>https://api.github.com/repos/github/docs/issues/33464</h3>
+                <h2 className='item-name'>{user}</h2>
+                <h3 className='item-link'>{link}</h3>
             </div>
         </div>
     )

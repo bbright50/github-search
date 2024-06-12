@@ -1,24 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SearchFilter from "./SearchFilter"
 import { Octokit } from "octokit";
 
 
 
 export default function SearchBar() {
- const [searchValue, setSearchValue] = React.useState("")
+ const [perPage, setPerPage] = React.useState(10)
  const octokit = new Octokit({ });
+  let newArray =[]
 
- function repoReq() {octokit.rest.issues.listForRepo({
+ function repoReq(numPage) {octokit.rest.issues.listForRepo({
     owner: "github",
     repo: "docs",
-    per_page: 1
+    per_page: numPage
   })
-  .then(data => console.log(data))
+  .then(data => {
+    newArray = data.data
+    console.log(newArray)
+  })
 };
 
-repoReq()
-//  data.data[1].title
-// data.data[0].id
+React.useEffect (() => {
+  repoReq(perPage)
+}, [])
+
+
+//  data.data[i].title          article
+//  data.data[i].id             id
+//  data.data[i].url            link
+//  data.data[i].user           name
+//  data.headers.link[0]        for the next page link; will be there if there are more pages
+
+
 //   .then(data => data.map())
 
     // function autoSuggest() {
@@ -36,18 +49,21 @@ repoReq()
     // Need to add autosuggest function in here
  }
 
-function gitApiCall() {
-    console.log("called API")
-    // fetch("https://docs.github.com/en/rest")
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-}
 
   return (
         <div className='search-bar'>
-            <form className='search-form' onSubmit={repoReq}>
-                <input type="text" placeholder="Enter Search Topic" onChange={handleSeachValueChange}/>
-                <SearchFilter />
+            <form className='search-form' onSubmit={console.log("clicked")}>
+                <input 
+                type="text" 
+                placeholder="Enter Search Topic" 
+                onChange={handleSeachValueChange}/>
+                <SearchFilter 
+                setPerPage={setPerPage}
+                name={newArray.user}
+                link={newArray.link}
+                article={newArray.title}
+                id={newArray.id}
+                 />
                 <button className='search-button' type='submit'>Search</button>
             </form>
         </div>
