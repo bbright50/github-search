@@ -1,8 +1,12 @@
 import React from 'react'
+import SearchItems from './SearchItems'
 
 
 export default function SearchResults() {
 
-    return
-        <p>Search Reulsts Here</p>
+    return (
+        <div className='result-list'>
+            <SearchItems />
+        </div>
+    )
 }
