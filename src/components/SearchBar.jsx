@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import SearchFilter from "./SearchFilter"
+import SearchResults from './SearchResults';
 import { Octokit } from "octokit";
 
 
@@ -7,22 +8,22 @@ import { Octokit } from "octokit";
 export default function SearchBar() {
  const [perPage, setPerPage] = React.useState(10)
  const octokit = new Octokit({ });
-  let newArray =[]
+ let newArray = []
 
- function repoReq(numPage) {octokit.rest.issues.listForRepo({
+ function repoReq(perPage) {octokit.rest.issues.listForRepo({
     owner: "github",
     repo: "docs",
-    per_page: numPage
+    per_page: perPage
   })
   .then(data => {
     newArray = data.data
-    console.log(newArray)
+    console.log(newArray[0])
   })
 };
 
 React.useEffect (() => {
   repoReq(perPage)
-}, [])
+}, [perPage])
 
 
 //  data.data[i].title          article
@@ -49,6 +50,17 @@ React.useEffect (() => {
     // Need to add autosuggest function in here
  }
 
+// const callResults = newArray.map(issue => {
+//   return (
+//     <SearchResults 
+//               name={newArray.user}
+//               link={newArray.link}
+//               article={newArray.title}
+//               id={newArray.id}
+//             />
+//     )
+//   })
+
 
   return (
         <div className='search-bar'>
@@ -57,15 +69,16 @@ React.useEffect (() => {
                 type="text" 
                 placeholder="Enter Search Topic" 
                 onChange={handleSeachValueChange}/>
-                <SearchFilter 
-                setPerPage={setPerPage}
-                name={newArray.user}
-                link={newArray.link}
-                article={newArray.title}
-                id={newArray.id}
-                 />
+                <SearchFilter setPerPage={setPerPage}/>
                 <button className='search-button' type='submit'>Search</button>
             </form>
         </div>
   )
 }
+
+// name={newArray.user}
+// link={newArray.link}
+// article={newArray.title}
+// id={newArray.id}
+
+

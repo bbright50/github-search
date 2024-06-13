@@ -88,12 +88,4 @@ input {
   padding: .5em;
 }
 
-.item-article{
-  /* need to adjust font size because it is very big on smaller width screens */
-}
-
-.item-link {
-/* need to disable at 720px and below */
-}
-
 }
