@@ -2,34 +2,40 @@ import React from "react";
 
 const SearchContext = React.createContext();
 
-const data = {
+const contextData = {
     perPage: 10,
+    language: "",
     autoSuggest: false,
     loading: false,
     searchValue: "",
-    currentPull: {}
+    currentPull: []
 };
 
 const setPerPage = (perPage) => {
-    data.perPage = perPage;
+    contextData.perPage = perPage;
 };
 
-const setAutoSuggest = (value) => { data.autoSuggest = value; }
+const setLanguage = (language) => {
+    contextData.language = language;
+};
 
-const setSearchValue = (value) => { data.searchValue  = value; }
+const setAutoSuggest = (value) => { contextData.autoSuggest = value; }
 
-const setCurrentPull = (value) => { data.currentPull  = value; }
+const setSearchValue = (value) => { contextData.searchValue = value; }
 
-const setLoading = (value) => { data.loading = value; }
+const setCurrentPull = (value) => { contextData.currentPull = value; }
+
+const setLoading = (value) => { contextData.loading = value; }
 
 const SearchProvider = (props) => {
     let value = {
-        data,
+        contextData,
         setPerPage,
         setAutoSuggest,
         setSearchValue,
         setCurrentPull,
-        setLoading
+        setLoading,
+        setLanguage
     };
     return <SearchContext.Provider value={value}>
         {props.children}

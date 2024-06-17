@@ -4,38 +4,52 @@ import { Octokit } from "octokit";
 
 
 
+const octokit = new Octokit({
+  auth: ""
+});
+
 
 export default function SButton() {
-    const { data, setPerPage, setLoading, setCurrentPull, setSearchArray } = React.useContext(SearchContext)
-    const { perPage, currentPull, searchArray, loading } = data;
-    const octokit = new Octokit({ });
-
-    function repoReq(pages) {octokit.rest.issues.listForRepo({
-        owner: "github",
-        repo: "docs",
-        per_page: pages
-      })
-      .then(data => {
-          // setLoading(true) issue re-rendering when changing value like this
-          setCurrentPull(data)
-          console.log(currentPull)
-          // setSearchArray(currentPull.data)
-          // setLoading(false)
-          // console.log(searchArray)
-      })
-    };
-    
-// currentPull.data[0].html_url LINK
-// currentPull.data[0] RAW TITLE
-// currentPull.data[0].user.login USERNAME
+  const { contextData, setPerPage, setLoading, setCurrentPull } = React.useContext(SearchContext)
+  const { perPage, currentPull, loading, searchValue } = contextData;
 
 
-    React.useEffect (() => {
-      repoReq(perPage)
-    }, [perPage])
+  React.useEffect(() => {
+    async function fetchData() {
+      const response = await octokit.request(`GET /orgs/{org}/repos`, {
+        org: "octokit",
+      });
+      // response type id object
+      const objList = response.data
+      setCurrentPull(objList);
+    }
+    fetchData()
+  }, [contextData, setCurrentPull])
 
 
-    return (
-        <button className='' onClick={repoReq(perPage)}>Search</button>
-    )
+  function sortPullData() {
+    console.log(currentPull)
+    // iterate through each response
+    for (const repos of currentPull) {
+      // for (const repo of repos) {
+      console.log(repos)
+      // }
+    }
+  }
+
+  // obj.id is key
+  // obj.full_name is the name of repo
+  // obj.owner.login is the owners username WILL BE 'OCTOKIT'
+  // obj.description is repo description
+  // obj.html_url is the link
+
+  // obj.language is repo language
+  // obj.stargazers_count is star count
+  // obj.forks is the number of forks
+
+
+
+  return (
+    <button onClick={console.log("clicked")}>{loading ? "Searching" : "Search"}</button>
+  )
 }

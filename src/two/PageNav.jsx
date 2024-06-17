@@ -6,6 +6,6 @@ export default function PageNav() {
 // data.headers.link
 
     return (
-        <h1>PageNav</h1>
+        <h1 className="page-nav">PageNav</h1>
     )
 }

@@ -1,24 +1,31 @@
 import React from "react";
 import { SearchContext } from "./SearchContext";
-
+import lodash from "lodash"
 
 export default function SBar() {
-    const { perPage, setAutoSuggest, searchValue, setSearchValue } = React.useContext(SearchContext)
+    const { contextData, setAutoSuggest, setSearchValue } = React.useContext(SearchContext)
+    const { perPage, currentPull, loading, searchValue } = contextData;
 
-    function handleSeachValueChange(e) {
-        // would need use effect w/ time delay instead of setSearchValue
-        setSearchValue(e.target.value) 
-        console.log(searchValue)
-        setAutoSuggest(prevAutoSuggest => !prevAutoSuggest)
-        // Need to add autosuggest function in here
-    }
+
+    let debounce_func = lodash.debounce(function (e) {
+        setSearchValue(e.target.value);
+    }, 1000);
+
+
+    // function handleSeachValueChange(e) {
+    //     setSearchValue(e.target.value)
+    //     console.log(searchValue)
+    // }
+
+    // pass debounce into onchange function with the value of the typed in text
 
     return (
         <div>
-                <input 
-                type="text" 
-                placeholder="Enter Search Topic" 
-                onChange={handleSeachValueChange}/>
+            <input
+                type="text"
+                placeholder="Enter Search Topic"
+                className="s-bar"
+                onChange={debounce_func} />
         </div>
     )
 }

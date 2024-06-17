@@ -4,88 +4,144 @@ body {
 
 #root {
   max-width: 80%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  align-self: flex-start;
-  margin-top: 8rem;
+  margin: 5vh auto auto auto;
 }
 
-
-.search-form {
-  display: flex;
-  gap: 1em;
-  box-sizing: border-box;
-
+p {
+  margin: 0;
 }
 
-input {
-  width: 60vw;
+.s-bar {
+  width: 35vw;
+  background-color: lightgray;
+  font-size: 1.5rem;
+  padding: .25em;
   border-radius: 7px;
-  background-color: #B2B1B3;
   color: black;
-  font-size: large;
+  margin-bottom: 0;
+
 }
 
-.search-button {
-  background-color: #B2B1B3;
-  border: black solid 1px;
-  color: black;
-}
-
-.result-list {
-  margin: 0;
-  padding: 0;
-}
-
-.result-item {
-  border: black solid 1px;
-  margin: 0;
-  padding: 0;
-}
-.item-name {
-  font-size: 1rem;
-}
-
-.item-article {
-  font-size: 1.25rem;
-  margin: 0 0 0 1em;
-  text-align: left;
-}
-
-.item-link {
-  font-size: 1rem;
-}
-
-
-.result-lower-box {
+.s-bar-line {
   display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0;
+
+}
+
+.s-filter {
+  width: 60px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 7px;
+  font-size: 1rem;
+  margin-bottom: 0;
+
+}
+
+.s-lang-filter {
+  width: 150px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 7px;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.s-button {
+  display: block;
+  text-align: center;
+  /* margin-bottom: 2vh; */
+}
+
+.s-cluster {
   margin: 0;
-  padding: 0;
+}
+
+.big-result-box {
+  /* border: red solid 1px; */
+  width: 85vw;
+}
+
+.small-result-box {
+  /* border: purple solid 1px; */
+  padding: 0 2vw;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: 1.5rem;
 }
 
+.title {
+  font-size: 1.5rem;
+  padding-left: 3vw;
+  margin: 0;
+}
+
+.username {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.link {
+  margin: 0;
+  padding: 0;
+  font-size: .75rem;
+
+}
+
+hr {
+  color: gray;
+  border-width: 0;
+  background-color: gray;
+  height: 2px;
+}
+
+.result-field {
+  /* border: orange solid 1px; */
+  color: cyan;
+}
+
+.page-nav {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.s-suggest {
+  background-color: lightcoral;
+  margin-top: 0;
+  width: 50vw;
+  margin-left: 6.5vw;
+  border-radius: 7px;
+  padding: .2em;
+  position: absolute;
+  z-index: 99;
+}
 
 /* This is for the resposive UI */
 
-@media(max-width: 720px) {
-  
-.search-form {
-  flex-direction: column;
+@media(min-width: 700px) {
+  .s-button {
+    margin-bottom: 0;
+
+  }
+
+  .s-cluster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 2vw; */
+  }
+
+  .s-filter {}
 
 }
 
-.search-button {
-  width: 17vw;
-  align-self: center;
+@media(min-width: 1200px) {
+  /* make all results appear in 1 line with a little more margins */
 
-}
-
-input {
-  font-size: large;
-  padding: .5em;
-}
 
 }

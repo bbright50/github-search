@@ -13,14 +13,16 @@ export default function MainPage() {
     return (
         <div>
             <SearchProvider>
-                <div className="search-bar">
-                    <SBar />
-                    <SFilter />
+                <div className="s-cluster">
+                    <div className="s-bar-line">
+                        <SBar />
+                        <SFilter />
+                    </div>
+                    <div className="s-button">
+                        <SButton />
+                    </div>
                 </div>
-                <div className="search-button">
-                    <SButton />
-                </div>
-                <div className="search-suggest">
+                <div className="s-suggest">
                     <SSuggest />
                 </div>
                 <div className="result-field">

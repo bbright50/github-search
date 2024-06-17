@@ -3,8 +3,8 @@ import { SearchContext } from "./SearchContext";
 
 
 export default function SResultIndividual() {
-    const { data, setPerPage, setLoading } = React.useContext(SearchContext)
-    const { perPage, currentPull, searchArray } = data;
+    const { contextData, setPerPage, setLoading } = React.useContext(SearchContext)
+    const { perPage, currentPull, loading } = contextData;
 
 // currentPull.data[0].html_url LINK
 // currentPull.data[0] RAW TITLE
@@ -12,12 +12,13 @@ export default function SResultIndividual() {
 
 
     return (
-        <div className="result-lower-box">
-            <h1 className=''>article</h1>
-            <div className=''>
-                <h2 className=''>name</h2>
-                <h3 className=''>link</h3>
+        <div className="big-result-box">
+            <h1 className='title'>Insert Cool Title Here</h1>
+            <div className='small-result-box'>
+                <h2 className='username'>Username</h2>
+                <h3 className='link'>this.is.a.legit.website . co m</h3>
             </div>
+            <hr></hr>
         </div>
     )
 }
