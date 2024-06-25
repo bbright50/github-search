@@ -5,7 +5,7 @@ import { SearchContext } from "./SearchContext";
 
 export default function SFilter() {
     const { contextData, setPerPage, setLanguage } = React.useContext(SearchContext)
-    const { perPage, currentPull, loading } = contextData;
+    const { perPage, currentPull, loading, language } = contextData;
 
 
 
@@ -14,6 +14,7 @@ export default function SFilter() {
         console.log(event.target.value)
         const { value } = event.target
         setPerPage(value)
+        console.log(perPage)
     }
 
     function handleLanguageChange(event) {
@@ -21,13 +22,14 @@ export default function SFilter() {
         console.log(event.target.value)
         const { value } = event.target
         setLanguage(value)
+        console.log(language)
     }
 
     return (
         <>
             <select
                 id="language"
-                value={""}
+                value={undefined}
                 onChange={handleLanguageChange}
                 className="s-lang-filter"
                 name="language">

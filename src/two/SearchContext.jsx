@@ -11,8 +11,8 @@ const contextData = {
     currentPull: []
 };
 
-const setPerPage = (perPage) => {
-    contextData.perPage = perPage;
+const setPerPage = (value) => {
+    contextData.perPage = value;
 };
 
 const setLanguage = (language) => {

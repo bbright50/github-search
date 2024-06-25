@@ -11,8 +11,19 @@ const octokit = new Octokit({
 
 export default function SButton() {
   const { contextData, setPerPage, setLoading, setCurrentPull } = React.useContext(SearchContext)
-  const { perPage, currentPull, loading, searchValue } = contextData;
+  const { perPage, currentPull, loading, searchValue, language } = contextData;
 
+  // 
+  // function makeQString() {
+  // let query = ""
+  //   if searchValue {
+  //     query += "?" + searchValue
+  //   } else break
+  //   if language {
+  //     query += "&" + language
+  //   }
+  //   return query
+  // }
 
   React.useEffect(() => {
     async function fetchData() {
@@ -27,15 +38,7 @@ export default function SButton() {
   }, [contextData, setCurrentPull])
 
 
-  function sortPullData() {
-    console.log(currentPull)
-    // iterate through each response
-    for (const repos of currentPull) {
-      // for (const repo of repos) {
-      console.log(repos)
-      // }
-    }
-  }
+
 
   // obj.id is key
   // obj.full_name is the name of repo

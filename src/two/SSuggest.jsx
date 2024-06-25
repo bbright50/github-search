@@ -7,8 +7,9 @@ export default function SSuggest() {
     const { perPage, currentPull, loading, autoSuggest } = contextData;
 
 
-    
+
     if (autoSuggest) {
+        // set objlist or whatever is rendering results to []
         return <h1>Suggest</h1>
     } else {
         return <></>

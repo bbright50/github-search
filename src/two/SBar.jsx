@@ -8,7 +8,9 @@ export default function SBar() {
 
 
     let debounce_func = lodash.debounce(function (e) {
+        console.log(e.target.value)
         setSearchValue(e.target.value);
+        console.log(searchValue)
     }, 1000);
 
 
