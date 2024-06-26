@@ -1,10 +1,21 @@
 import React from "react";
-import { SearchContext } from "./SearchContext";
+import { useSearchContext } from "./SearchContext";
 
 
 export default function SResultIndividual() {
-    const { contextData, setPerPage, setLoading } = React.useContext(SearchContext)
-    const { perPage, currentPull, loading } = contextData;
+    const {
+        setPerPage,
+        setLoading,
+        setCurrentPull,
+        setLanguage,
+        setSearchValue,
+        setAutoSuggest,
+        perPage,
+        currentPull,
+        loading,
+        searchValue,
+        language,
+        autoSuggest } = useSearchContext();
 
     // ***function to make the perPage amount of objects in the array to prep them to render***
     // needs to be a normal for loop with the number of times changing based on perPage

@@ -1,10 +1,21 @@
 import React from "react";
-import { SearchContext } from "./SearchContext";
+import { useSearchContext } from "./SearchContext";
 import lodash from "lodash"
 
 export default function SBar() {
-    const { contextData, setAutoSuggest, setSearchValue } = React.useContext(SearchContext)
-    const { perPage, currentPull, loading, searchValue } = contextData;
+    const {
+        setPerPage,
+        setLoading,
+        setCurrentPull,
+        setLanguage,
+        setSearchValue,
+        setAutoSuggest,
+        perPage,
+        currentPull,
+        loading,
+        searchValue,
+        language,
+        autoSuggest } = useSearchContext();
 
 
     let debounce_func = lodash.debounce(function (e) {

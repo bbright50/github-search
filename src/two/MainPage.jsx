@@ -5,9 +5,7 @@ import SFilter from "./SFilter";
 import SResultField from "./SResultField";
 import PageNav from "./PageNav";
 import SSuggest from "./SSuggest";
-
-import { SearchContext, SearchProvider } from "./SearchContext";
-
+import { SearchProvider } from "./SearchContext";
 
 export default function MainPage() {
     return (
@@ -33,5 +31,3 @@ export default function MainPage() {
         </div>
     )
 }
-
-export {SearchContext}

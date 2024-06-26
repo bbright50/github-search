@@ -1,10 +1,21 @@
 import React from "react";
-import { SearchContext } from "./SearchContext";
+import { useSearchContext } from "./SearchContext";
 
 
 export default function SSuggest() {
-    const { contextData } = React.useContext(SearchContext)
-    const { perPage, currentPull, loading, autoSuggest } = contextData;
+    const {
+        setPerPage,
+        setLoading,
+        setCurrentPull,
+        setLanguage,
+        setSearchValue,
+        setAutoSuggest,
+        perPage,
+        currentPull,
+        loading,
+        searchValue,
+        language,
+        autoSuggest } = useSearchContext();
 
 
 

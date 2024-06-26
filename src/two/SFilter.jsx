@@ -1,11 +1,22 @@
 import React from "react";
-import { SearchContext } from "./SearchContext";
+import { useSearchContext } from "./SearchContext";
 
 
 
 export default function SFilter() {
-    const { contextData, setPerPage, setLanguage } = React.useContext(SearchContext)
-    const { perPage, currentPull, loading, language } = contextData;
+    const {
+        setPerPage,
+        setLoading,
+        setCurrentPull,
+        setLanguage,
+        setSearchValue,
+        setAutoSuggest,
+        perPage,
+        currentPull,
+        loading,
+        searchValue,
+        language,
+        autoSuggest } = useSearchContext();
 
 
 

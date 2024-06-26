@@ -1,8 +1,6 @@
 import React from "react";
-import { SearchContext } from "./SearchContext";
+import { useSearchContext } from "./SearchContext";
 import { Octokit } from "octokit";
-
-
 
 const octokit = new Octokit({
   auth: ""
@@ -10,8 +8,19 @@ const octokit = new Octokit({
 
 
 export default function SButton() {
-  const { contextData, setPerPage, setLoading, setCurrentPull } = React.useContext(SearchContext)
-  const { perPage, currentPull, loading, searchValue, language } = contextData;
+  const {
+    setPerPage,
+    setLoading,
+    setCurrentPull,
+    setLanguage,
+    setSearchValue,
+    setAutoSuggest,
+    perPage,
+    currentPull,
+    loading,
+    searchValue,
+    language,
+    autoSuggest } = useSearchContext();
 
   // 
   // function makeQString() {
@@ -35,9 +44,9 @@ export default function SButton() {
       setCurrentPull(objList);
     }
     fetchData()
-  }, [contextData, setCurrentPull])
+  }, [])
 
-
+  // [currentPull, searchValue, language, perPage, setCurrentPull] endless loop
 
 
   // obj.id is key

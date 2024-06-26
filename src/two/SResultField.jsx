@@ -1,10 +1,21 @@
 import React from "react";
 import SResultIndividual from "./SResultIndividual";
-import { SearchContext } from "./SearchContext";
+import { useSearchContext } from "./SearchContext";
 
 export default function SResultField() {
-    const { contextData } = React.useContext(SearchContext)
-    const { perPage, currentPull, loading } = contextData;
+    const {
+        setPerPage,
+        setLoading,
+        setCurrentPull,
+        setLanguage,
+        setSearchValue,
+        setAutoSuggest,
+        perPage,
+        currentPull,
+        loading,
+        searchValue,
+        language,
+        autoSuggest } = useSearchContext();
 
 
 
@@ -16,7 +27,7 @@ export default function SResultField() {
             <SResultIndividual />
             <SResultIndividual />
             <SResultIndividual />
-            
+
         </div>
     )
 }
