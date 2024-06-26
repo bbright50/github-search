@@ -2,6 +2,8 @@ import React from "react";
 import SResultIndividual from "./SResultIndividual";
 import { useSearchContext } from "./SearchContext";
 
+
+
 export default function SResultField() {
     const {
         setPerPage,
@@ -10,6 +12,8 @@ export default function SResultField() {
         setLanguage,
         setSearchValue,
         setAutoSuggest,
+        setDisplay,
+        display,
         perPage,
         currentPull,
         loading,
@@ -18,16 +22,21 @@ export default function SResultField() {
         autoSuggest } = useSearchContext();
 
 
+    let searchElement = currentPull.slice(perPage, (perPage + 10))
+    const showElement = searchElement.map(show => {
+        return <SResultIndividual
+            key={show.id}
+            name={show.name}
+            description={show.description}
+            language={show.language}
+            forks={show.forks}
+            stars={show.stargazers_count}
+        />
+    })
 
     return (
         <div>
-            <SResultIndividual />
-            <SResultIndividual />
-            <SResultIndividual />
-            <SResultIndividual />
-            <SResultIndividual />
-            <SResultIndividual />
-
+            {showElement}
         </div>
     )
 }

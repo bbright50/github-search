@@ -15,6 +15,8 @@ export default function SButton() {
     setLanguage,
     setSearchValue,
     setAutoSuggest,
+    setDisplay,
+    display,
     perPage,
     currentPull,
     loading,
@@ -38,30 +40,25 @@ export default function SButton() {
     async function fetchData() {
       const response = await octokit.request(`GET /orgs/{org}/repos`, {
         org: "octokit",
+        per_page: 30,
       });
       // response type id object
       const objList = response.data
       setCurrentPull(objList);
+      console.log(currentPull)
     }
     fetchData()
-  }, [])
+  }, [language])
+
+
+
 
   // [currentPull, searchValue, language, perPage, setCurrentPull] endless loop
-
-
-  // obj.id is key
-  // obj.full_name is the name of repo
-  // obj.owner.login is the owners username WILL BE 'OCTOKIT'
-  // obj.description is repo description
-  // obj.html_url is the link
-
-  // obj.language is repo language
-  // obj.stargazers_count is star count
-  // obj.forks is the number of forks
-
 
 
   return (
     <button onClick={console.log("clicked")}>{loading ? "Searching" : "Search"}</button>
   )
 }
+
+// setDisplay(() => !display)

@@ -124,6 +124,8 @@ hr {
   padding: 0;
   font-size: 1rem;
   text-align: right;
+  background: none;
+  color: inherit;
 }
 
 .s-suggest {
@@ -150,6 +152,11 @@ hr {
     justify-content: center;
     align-items: center;
     /* margin-bottom: 2vw; */
+  }
+
+  .page-nav-bar {
+    display: flex;
+    justify-content: space-between;
   }
 
   .s-filter {}

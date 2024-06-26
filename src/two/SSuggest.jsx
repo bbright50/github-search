@@ -10,6 +10,8 @@ export default function SSuggest() {
         setLanguage,
         setSearchValue,
         setAutoSuggest,
+        setDisplay,
+        display,
         perPage,
         currentPull,
         loading,

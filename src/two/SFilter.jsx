@@ -11,6 +11,8 @@ export default function SFilter() {
         setLanguage,
         setSearchValue,
         setAutoSuggest,
+        setDisplay,
+        display,
         perPage,
         currentPull,
         loading,
@@ -20,13 +22,13 @@ export default function SFilter() {
 
 
 
-    function handlePageChange(event) {
-        event.preventDefault()
-        console.log(event.target.value)
-        const { value } = event.target
-        setPerPage(value)
-        console.log(perPage)
-    }
+    // function handlePageChange(event) {
+    //     event.preventDefault()
+    //     console.log(event.target.value)
+    //     const { value } = event.target
+    //     setPerPage(value)
+    //     console.log(perPage)
+    // }
 
     function handleLanguageChange(event) {
         event.preventDefault()
@@ -49,7 +51,7 @@ export default function SFilter() {
                 <option value="ruby">Ruby</option>
                 <option value="nodejs">NodeJS</option>
             </select>
-            <select
+            {/* <select
                 id="numPerPage"
                 value={10}
                 onChange={handlePageChange}
@@ -59,7 +61,7 @@ export default function SFilter() {
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
-            </select>
+            </select> */}
         </>
     )
 }

@@ -10,6 +10,8 @@ export default function SBar() {
         setLanguage,
         setSearchValue,
         setAutoSuggest,
+        setDisplay,
+        display,
         perPage,
         currentPull,
         loading,
