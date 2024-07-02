@@ -47,25 +47,23 @@ export default function SButton() {
   // obj.forks is the number of forks
 
   React.useEffect(() => {
-    let query = ""
-    if (searchValue) {
-      query += "?qin:name" + searchValue
-    }
-    if (language) {
-      query += "&" + language
-    }
-    console.log(query)
-    async function fetchData() {
-      const response = await octokit.request(`GET /orgs/{org}/repos${query}`, {
-        org: "octokit",
-        per_page: 30,
-        in: { searchValue },
 
-      });
-      // response type is object
-      const objList = response.data
-      setCurrentPull(objList);
-      console.log(currentPull)
+    async function fetchData() {
+      try {
+        const response = await octokit.request(
+          `GET /orgs/{org}/repos?{q}`, {
+          org: "octokit",
+          q: `language: ${language}`,
+          per_page: 30,
+        });
+
+        // response type is object
+        const objList = response.data
+        setCurrentPull(objList);
+        console.log(currentPull)
+      } catch (error) {
+        console.error('There was an error searching for repositories:', error);
+      }
     }
     fetchData()
   }, [language])
