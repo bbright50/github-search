@@ -47,9 +47,12 @@ export default function SFilter() {
                 className="s-lang-filter"
                 name="language">
                 <option value={""} selected>Project Language</option>
-                <option value="javascript">Javascript</option>
-                <option value="ruby">Ruby</option>
-                <option value="nodejs">NodeJS</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Ruby">Ruby</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="Objective-C">Objective-C</option>
+                <option value="Go">Go</option>
+                <option value="C#">C#</option>
             </select>
             {/* <select
                 id="numPerPage"

@@ -31,7 +31,10 @@ export default function SResultIndividual(props) {
     // obj.stargazers_count is star count
     // obj.forks is the number of forks
 
-    return (
+
+
+
+    return (display &&
         <>
             < div className="big-result-box" >
                 <div className="top-box">

@@ -35,7 +35,7 @@ export default function PageNav() {
     return (
         <div className="page-nav-bar">
             {!!perPage && <button className="page-nav" onClick={prevPage}>Previous Page</button>}
-            <button className="page-nav" onClick={nextPage}>Next Page</button>
+            {perPage < 20 && <button className="page-nav" onClick={nextPage}>Next Page</button>}
         </div>
     )
 }
