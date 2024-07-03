@@ -20,9 +20,6 @@ export default function MainPage() {
                         <SButton />
                     </div>
                 </div>
-                <div className="s-suggest">
-                    <SSuggest />
-                </div>
                 <div className="result-field">
                     <SResultField />
                     <PageNav />

@@ -1,4 +1,5 @@
 import React from "react";
+import SSuggest from "./SSuggest";
 import { useSearchContext } from "./SearchContext";
 import lodash from "lodash"
 
@@ -24,23 +25,35 @@ export default function SBar() {
         console.log(e.target.value)
         setSearchValue(e.target.value);
         console.log(searchValue)
+        setDisplay(false)
+        setAutoSuggest(true)
+        // Can change once render issue is gone
+        if (e.target.value === "") { setAutoSuggest(false) }
     }, 1000);
 
 
-    // function handleSeachValueChange(e) {
-    //     setSearchValue(e.target.value)
-    //     console.log(searchValue)
-    // }
+    let searchSuggest = currentPull.slice(0, 10)
+    const suggestElement = searchSuggest.map(suggest => {
+        return <SSuggest
+            key={suggest.id}
+            name={suggest.name}
+            link={suggest.html_link}
+        />
+    })
 
-    // pass debounce into onchange function with the value of the typed in text
 
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Enter Search Topic"
-                className="s-bar"
-                onChange={debounce_func} />
+        <div className="s-bar-box">
+            <div>
+                <input
+                    type="text"
+                    placeholder="Enter Search Topic"
+                    className="s-bar"
+                    onChange={debounce_func} />
+            </div>
+            <div className="s-suggest">
+                {suggestElement}
+            </div>
         </div>
     )
 }

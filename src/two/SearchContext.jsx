@@ -3,7 +3,7 @@ import React from "react";
 const SearchContext = React.createContext();
 
 export const SearchProvider = (props) => {
-    const [display, setDisplay] = React.useState(true)
+    const [display, setDisplay] = React.useState(false)
     const [perPage, setPerPage] = React.useState(0)
     const [language, setLanguage] = React.useState("")
     const [autoSuggest, setAutoSuggest] = React.useState(false)

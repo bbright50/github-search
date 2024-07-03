@@ -68,15 +68,17 @@ export default function SButton() {
     fetchData()
   }, [language])
 
-
-
-
   // [currentPull, searchValue, language, perPage, setCurrentPull] endless loop
 
 
+  function clickMotion() {
+    setDisplay(!display)
+    setAutoSuggest(false)
+  }
+
+
   return (
-    <button onClick={() => setDisplay(!display)}>{loading ? "Searching" : "Search"}</button>
+    <button onClick={clickMotion}>{loading ? "Searching" : "Search"}</button>
   )
 }
 
-// setDisplay(() => !display)

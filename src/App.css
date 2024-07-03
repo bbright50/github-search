@@ -12,51 +12,81 @@ p {
 }
 
 .s-bar {
-  width: 35vw;
+  width: 30vw;
   background-color: lightgray;
   font-size: 1.5rem;
-  padding: .25em;
+  padding: .25em .25em .25em .4em;
   border-radius: 7px;
   color: black;
   margin-bottom: 0;
+}
 
+.s-suggest {
+  background-color: lightgray;
+  font-size: 1.2rem;
+  color: black;
+  width: 31.4vw;
+  border-radius: 7px;
+  z-index: 99;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  border: black solid 1px;
+}
+
+.auto-suggest-item {
+  color: black;
+  text-align: left;
+  background: none;
+  padding-left: .5vw;
+}
+
+.s-bar-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .s-bar-line {
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: start;
   margin-bottom: 0;
 
 }
 
-.s-filter {
+
+.s-lang-filter {
+  width: 170px;
+  background-color: lightgray;
+  color: black;
+  border: black solid 1px;
+  border-radius: 7px;
+  font-size: 1rem;
+  margin-bottom: 0;
+  padding: 10px;
+  margin-top: 0px;
+}
+
+
+/* .s-filter {
   width: 60px;
   background-color: lightgray;
   color: black;
   border-radius: 7px;
   font-size: 1rem;
   margin-bottom: 0;
+} */
 
-}
-
-.s-lang-filter {
-  width: 150px;
-  background-color: lightgray;
-  color: black;
-  border-radius: 7px;
-  font-size: 1rem;
-  margin-bottom: 0;
-}
 
 .s-button {
-  display: block;
-  text-align: center;
+  margin: 0;
   /* margin-bottom: 2vh; */
 }
 
 .s-cluster {
   margin: 0;
+  display: flex;
+  align-items: start;
 }
 
 .big-result-box {
@@ -115,8 +145,10 @@ hr {
 }
 
 .result-field {
-  /* border: orange solid 1px; */
+  display: flex;
+  flex-direction: column;
   color: cyan;
+  border: purple solid 1px;
 }
 
 .page-nav {
@@ -128,16 +160,16 @@ hr {
   color: inherit;
 }
 
-.s-suggest {
-  background-color: lightcoral;
-  margin-top: 0;
-  width: 35vw;
-  margin-left: 0;
-  border-radius: 7px;
-  padding: .25em;
-  position: absolute;
-  z-index: 99;
+.page-nav-right {
+  border: green solid 1px;
+  margin-right: auto;
+  padding: 0;
+  font-size: 1rem;
+  text-align: right;
+  background: none;
+  color: inherit;
 }
+
 
 /* This is for the resposive UI */
 
@@ -150,7 +182,7 @@ hr {
   .s-cluster {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     /* margin-bottom: 2vw; */
   }
 
@@ -159,7 +191,6 @@ hr {
     justify-content: space-between;
   }
 
-  .s-filter {}
 
 }
 

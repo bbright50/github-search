@@ -20,7 +20,6 @@ export default function PageNav() {
         language,
         autoSuggest } = useSearchContext();
 
-    // data.headers.link
 
     function nextPage() {
         setPerPage((prevPerPage) => prevPerPage + 10)
@@ -32,10 +31,15 @@ export default function PageNav() {
         console.log(perPage)
     }
 
-    return (
-        <div className="page-nav-bar">
-            {!!perPage && <button className="page-nav" onClick={prevPage}>Previous Page</button>}
-            {perPage < 20 && <button className="page-nav" onClick={nextPage}>Next Page</button>}
-        </div>
-    )
+
+    if (perPage === 0) {
+        return <button className="page-nav-right" onClick={nextPage}>Next Page</button>
+    } else {
+        return (
+            <div className="page-nav-bar">
+                {!!perPage && <button className="page-nav" onClick={prevPage}>Previous Page</button>}
+                {perPage < 20 && <button className="page-nav" onClick={nextPage}>Next Page</button>}
+            </div>
+        )
+    }
 }
