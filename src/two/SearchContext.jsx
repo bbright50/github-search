@@ -9,7 +9,7 @@ export const SearchProvider = (props) => {
     const [autoSuggest, setAutoSuggest] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
     const [searchValue, setSearchValue] = React.useState("")
-    const [currentPull, setCurrentPull] = React.useState([])
+    const [currentPull, setCurrentPull] = React.useState({ items: [] })
     let value = {
         perPage,
         autoSuggest,

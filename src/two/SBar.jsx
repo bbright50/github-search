@@ -32,7 +32,7 @@ export default function SBar() {
     }, 1000);
 
 
-    let searchSuggest = currentPull.slice(0, 10)
+    let searchSuggest = currentPull.items.slice(0, 10)
     const suggestElement = searchSuggest.map(suggest => {
         return <SSuggest
             key={suggest.id}

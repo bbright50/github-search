@@ -6,6 +6,20 @@ const octokit = new Octokit({
   auth: ""
 });
 
+const buildQueryParams = (data) => {
+  const searchParams = [
+  ];
+  const { language, repoName } = data;
+  if (repoName) {
+    searchParams.push(`"${repoName}" in:name`)
+  }
+  if (language) {
+    searchParams.push(`language:${language}`);
+  }
+
+
+  return searchParams.length > 0 ? searchParams.join(" ") : undefined;
+}
 
 export default function SButton() {
   const {
@@ -25,20 +39,9 @@ export default function SButton() {
     autoSuggest } = useSearchContext();
 
 
-  // function makeQString() {
-  //   let query = ""
-  //   if searchValue {
-  //     query += "?" + searchValue
-  //   } else break
-  //   if language {
-  //     query += "&" + language
-  //   }
-  //   return query
-  // }
-
   // obj.id is key
   // obj.name is the name of repo
-  // obj.owner.login is the owners username WILL BE 'OCTOKIT'
+  // obj.owner.login is the owners username 
   // obj.description is repo description
   // obj.html_url is the link
 
@@ -50,25 +53,29 @@ export default function SButton() {
 
     async function fetchData() {
       try {
-        const response = await octokit.request(
-          `GET /orgs/{org}/repos?{q}`, {
-          org: "octokit",
-          q: `language: ${language}`,
-          per_page: 30,
+        const queryString = buildQueryParams({
+          repoName: searchValue,
+          language
         });
+        console.log(`query string: ${queryString}`);
+        if (queryString) {
+          const response = await octokit.request(
+            `GET /search/repositories`, {
+            q: queryString,
+            per_page: 30,
+          });
 
-        // response type is object
-        const objList = response.data
-        setCurrentPull(objList);
-        console.log(currentPull)
+          // response type is object
+          const objList = response.data
+          setCurrentPull(objList);
+          console.log(currentPull);
+        }
       } catch (error) {
         console.error('There was an error searching for repositories:', error);
       }
     }
     fetchData()
-  }, [language])
-
-  // [currentPull, searchValue, language, perPage, setCurrentPull] endless loop
+  }, [language, searchValue])
 
 
   function clickMotion() {
@@ -81,4 +88,3 @@ export default function SButton() {
     <button onClick={clickMotion}>{loading ? "Searching" : "Search"}</button>
   )
 }
-

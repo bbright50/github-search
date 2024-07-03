@@ -22,7 +22,7 @@ export default function SResultField() {
         autoSuggest } = useSearchContext();
 
 
-    let searchElement = currentPull.slice(perPage, (perPage + 10))
+    let searchElement = currentPull.items.slice(perPage, (perPage + 10))
     const showElement = searchElement.map(show => {
         return (
             <SResultIndividual
