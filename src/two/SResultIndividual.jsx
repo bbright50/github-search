@@ -32,22 +32,22 @@ export default function SResultIndividual(props) {
 
 
     return (display &&
-        <>
+        <a href={props.link} target="_blank">
             < div className="big-result-box" >
                 <div className="top-box">
                     <h1 className='title'>{props.name}</h1>
-                    <h2 className='username'>Octokit</h2>
+                    <h2 className='username'>{props.username}</h2>
                 </div>
                 <div className='small-result-box'>
                     <p className='description'>{props.description}</p>
                     <div className="small-filter-nums">
-                        <h3 className="language">Language:{props.language}</h3>
+                        <h3 className="language">Language: {(props.language) ? props.language : "None"}</h3>
                         <h4 className='forks'>Forks:{props.forks}</h4>
                         <h5 className='stars'>Stars:{props.stars}</h5>
                     </div>
                 </div>
                 <hr></hr>
             </div >
-        </>
+        </a>
     )
 }

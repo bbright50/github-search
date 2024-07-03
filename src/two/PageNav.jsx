@@ -33,12 +33,16 @@ export default function PageNav() {
 
 
     if (perPage === 0) {
-        return <button className="page-nav-right" onClick={nextPage}>Next Page</button>
+        return (
+            <div className="page-nav-bar">
+                {display && <button className="page-nav-right" onClick={nextPage}>Next Page</button>}
+            </div>
+        )
     } else {
         return (
             <div className="page-nav-bar">
-                {!!perPage && <button className="page-nav" onClick={prevPage}>Previous Page</button>}
-                {perPage < 20 && <button className="page-nav" onClick={nextPage}>Next Page</button>}
+                {!!perPage && display && <button className="page-nav" onClick={prevPage}>Previous Page</button>}
+                {display && perPage < 20 && <button className="page-nav" onClick={nextPage}>Next Page</button>}
             </div>
         )
     }

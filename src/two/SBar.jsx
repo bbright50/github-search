@@ -37,7 +37,7 @@ export default function SBar() {
         return <SSuggest
             key={suggest.id}
             name={suggest.name}
-            link={suggest.html_link}
+            link={suggest.html_url}
         />
     })
 
@@ -51,9 +51,9 @@ export default function SBar() {
                     className="s-bar"
                     onChange={debounce_func} />
             </div>
-            <div className="s-suggest">
+            <div className="s-suggest" style={{ border: autoSuggest ? "solid black 1px" : "" }}>
                 {suggestElement}
             </div>
-        </div>
+        </div >
     )
 }

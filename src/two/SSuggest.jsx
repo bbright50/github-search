@@ -27,7 +27,9 @@ export default function SSuggest(props) {
 
 
         return (autoSuggest &&
-            <button className="auto-suggest-item" onClick={props.link}>{props.name}</button>
+            <a href={(props.link)} target="_blank">
+                <button className="auto-suggest-item" onClick={props.link}>{props.name}</button>
+            </a>
         )
     }
 }

@@ -11,6 +11,12 @@ p {
   margin: 0;
 }
 
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 .s-bar {
   width: 30vw;
   background-color: lightgray;
@@ -31,7 +37,9 @@ p {
   text-align: left;
   display: flex;
   flex-direction: column;
-  border: black solid 1px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* border: black solid 1px; */
 }
 
 .auto-suggest-item {
@@ -39,6 +47,8 @@ p {
   text-align: left;
   background: none;
   padding-left: .5vw;
+  width: 100%;
+  text-overflow: ellipsis;
 }
 
 .s-bar-box {
@@ -63,7 +73,7 @@ p {
   border-radius: 7px;
   font-size: 1rem;
   margin-bottom: 0;
-  padding: 10px;
+  padding: 10.5px;
   margin-top: 0px;
 }
 
@@ -79,8 +89,7 @@ p {
 
 
 .s-button {
-  margin: 0;
-  /* margin-bottom: 2vh; */
+  margin: 1px 0 0 0;
 }
 
 .s-cluster {
@@ -90,11 +99,11 @@ p {
 }
 
 .big-result-box {
-  border: red solid 1px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 0 3vw;
+  border-bottom: black solid 1px;
 }
 
 .top-box {
@@ -104,20 +113,21 @@ p {
 }
 
 .small-result-box {
-  border: purple solid 1px;
   padding-left: 2vw;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 
 }
 
 .small-filter-nums {
   font-size: .75rem;
-  border: pink solid 1px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 10vw;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding-left: 2vw;
+
 }
 
 .title {
@@ -137,23 +147,39 @@ p {
 
 }
 
+.language {
+  font-size: 1rem;
+  margin: 0;
+
+}
+
+.forks {
+  font-size: 1rem;
+  margin: 0;
+
+}
+
+.stars {
+  font-size: 1rem;
+  margin: 0;
+
+}
+
 hr {
-  color: gray;
   border-width: 0;
-  background-color: gray;
-  height: 2px;
 }
 
 .result-field {
   display: flex;
   flex-direction: column;
   color: cyan;
-  border: purple solid 1px;
+  margin-bottom: 50px;
+  width: 62vw;
 }
 
 .page-nav {
   margin: 0;
-  padding: 0;
+  padding: 5px;
   font-size: 1rem;
   text-align: right;
   background: none;
@@ -161,17 +187,30 @@ hr {
 }
 
 .page-nav-right {
-  border: green solid 1px;
-  margin-right: auto;
-  padding: 0;
+  margin-left: auto;
+  padding: 5px;
   font-size: 1rem;
   text-align: right;
   background: none;
   color: inherit;
 }
 
+.page-nav-bar {
+  display: flex;
+  justify-content: space-between;
+}
 
 /* This is for the resposive UI */
+
+@media (max-width: 699px) {
+  .small-filter-nums {
+    flex-wrap: wrap;
+  }
+
+  .top-box {
+    flex-wrap: wrap;
+  }
+}
 
 @media(min-width: 700px) {
   .s-button {
@@ -183,14 +222,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: start;
-    /* margin-bottom: 2vw; */
   }
-
-  .page-nav-bar {
-    display: flex;
-    justify-content: space-between;
-  }
-
 
 }
 

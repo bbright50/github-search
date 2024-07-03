@@ -24,14 +24,18 @@ export default function SResultField() {
 
     let searchElement = currentPull.slice(perPage, (perPage + 10))
     const showElement = searchElement.map(show => {
-        return <SResultIndividual
-            key={show.id}
-            name={show.name}
-            description={show.description}
-            language={show.language}
-            forks={show.forks}
-            stars={show.stargazers_count}
-        />
+        return (
+            <SResultIndividual
+                key={show.id}
+                username={show.owner.login}
+                name={show.name}
+                description={show.description}
+                language={show.language}
+                forks={show.forks}
+                stars={show.stargazers_count}
+                link={show.html_url}
+            />
+        )
     })
 
     return (
